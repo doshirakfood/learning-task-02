@@ -1,0 +1,15 @@
+@each $name, $variable in $gray-list {
+	.text-gray-#{$name} {
+		color: var(--color-gray-#{$name});
+
+		fill: var(--color-gray-#{$name});
+	}
+}
+
+@each $name, $variable in $green-list {
+	.text-green-#{$name} {
+		color: var(--color-green-#{$name});
+
+		fill: var(--color-green-#{$name});
+	}
+}

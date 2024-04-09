@@ -1,0 +1,63 @@
+@mixin scroll-shadow-x($bcgColor) {
+	background-color: $bcgColor;
+	background-image: linear-gradient(to right, $bcgColor, $bcgColor), linear-gradient(to right, $bcgColor, $bcgColor), linear-gradient(to right, rgb(0 0 0 / 25%), rgb(255 255 255 / 0%)),linear-gradient(to left, rgb(0 0 0 / 25%), rgb(255 255 255 / 0%));
+	background-repeat: no-repeat;
+	background-position: left center, right center, left center, right center;
+	background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+	background-attachment: local, local, scroll, scroll;
+}
+
+
+@mixin scroll-shadow-y($bcgColor) {
+	background: linear-gradient($bcgColor 33%, rgb(255 255 255 / 0%)), linear-gradient(rgb(255 255 255 / 0%), $bcgColor 66%) 0 100%, radial-gradient(farthest-side at 50% 0, rgb(34 34 34 / 50%), rgb(0 0 0 / 0%)), radial-gradient(farthest-side at 50% 100%, rgb(34 34 34 / 50%), rgb(0 0 0 / 0%)) 0 100%;
+	background-color: $bcgColor;
+	background-repeat: no-repeat;
+	background-size: 100% 45px, 100% 45px, 100% 15px, 100% 15px;
+	background-attachment: local, local, scroll, scroll;
+}
+
+
+@mixin active() {
+	transform: translateY(2px);
+}
+
+@mixin focus() {
+	outline-color: var(--outline-primary);
+}
+
+@mixin focus-shadow() {
+	box-shadow: 0 1px 10px 0 rgb(78 78 78);
+}
+
+@mixin link-hover() {
+	color: var(--color-brand);
+
+	fill: var(--color-brand);
+}
+
+@mixin text-ellipsis() {
+	overflow: hidden;
+
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+@mixin outline-primary() {
+	outline: 2px solid transparent;
+}
+
+@mixin field-appearance() {
+	width: 100%;
+	padding: 16px 15px;
+	border-color: var(--gray-secondary);
+	border-style: solid;
+	border-width: 1px;
+	border-radius: $radius-secondary;
+
+	font-size: inherit;
+	font-family: $font-family;
+	line-height: normal;
+	letter-spacing: -0.04em;
+
+	background-color: var(--bg-secondary);
+}

@@ -1,0 +1,7 @@
+$name-text-list: 'tiny', 'small', 'medium', 'large', 'xl', 'xxl';
+
+@each $name in $name-text-list {
+	.text-#{$name} {
+		font-size: var(--text-size-#{$name});
+	}
+}

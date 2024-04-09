@@ -1,0 +1,79 @@
+// ** desktop **
+
+// <= 1440px
+media-desktop-m($resolution: $lg-m) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+// <= 1280px
+media-desktop-s($resolution: $lg-s) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+// <= 1024px
+media-desktop-xs($resolution: $lg-xs) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+
+// ** tablet **
+
+
+// <= 980px
+media-table-m($resolution: $medium-m) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+// <= 768px
+media-table-s($resolution: $medium-s) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+
+// ** phone **
+
+
+// <= 650px
+media-phone-m($resolution: $small-m) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+// <= 480px
+media-phone-s($resolution: $small-s) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+// <= 380px
+media-phone-xs($resolution: $small-xs) {
+	@media screen and (width <= $resolution) {
+		@content;
+	}
+}
+
+
+// custom
+media-custom-max($variable) {
+	@media screen and (width <= $variable) {
+		@content;
+	}
+}
+
+media-custom-min($variable) {
+	@media screen and (width >= $variable) {
+		@content;
+	}
+}
