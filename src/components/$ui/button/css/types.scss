@@ -1,7 +1,17 @@
 // type
 .btn {
+	$bp: &;
+
 	&-border {
-		border: 1.5px solid;
+		border-color: inherit;
+
+		&:hover {
+			border-color: var(--color-hard-primary);
+
+			color: var(--color-hard-primary);
+
+			fill: var(--color-hard-primary);
+		}
 	}
 
 	&-link {
@@ -10,15 +20,15 @@
 
 	&-icon {
 		&-only {
-			width: 24px;
-			height: 24px;
+			width: 40px;
+			height: 40px;
 			padding: 0;
 
-			.btn {
+			#{$bp} {
 				&-icon {
-					width: 18px;
-					min-width: 18px;
-					height: 18px;
+					width: 16px;
+					min-width: 16px;
+					height: 16px;
 				}
 			}
 		}

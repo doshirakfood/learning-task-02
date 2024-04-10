@@ -1,6 +1,6 @@
 <template>
 	<div class="section-box">
-		<h2 class="section-box__title">{{ title }}</h2>
+		<h2 v-if="title" class="section-box__title">{{ title }}</h2>
 		<div class="section-box__content">
 			<slot />
 		</div>

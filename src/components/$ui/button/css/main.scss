@@ -4,31 +4,33 @@ button,
 	align-items: center;
 	justify-content: center;
 	padding: 10px 20px;
-	border: 0 solid transparent;
+	border: 2px solid transparent;
 	border-radius: $radius-tertiary;
 
-	color: inherit;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: normal;
+	font-weight: 600;
+	font-family: inherit;
+	line-height: 120%;
 
 	background-color: transparent;
 	cursor: pointer;
 
-	transition: all $transition-primary;
+	transition: background-color $transition-primary, color 0s, fill 0s;
 
 	.icon {
 		&-left {
-			margin: 0 10px 0 0;
+			margin: 0 8px 0 0;
 		}
 
 		&-right {
-			margin: 0 0 0 10px;
+			order: 1;
+			margin: 0 0 0 8px;
 		}
 	}
 }
 
 .btn {
+	$bp: &;
+
 	@include outline-primary;
 
 	&-wrapper,
@@ -43,9 +45,9 @@ button,
 
 	&-icon,
 	&-pic {
-		width: 22px;
-		min-width: 22px;
-		height: 22px;
+		width: 16px;
+		min-width: 16px;
+		height: 16px;
 
 		pointer-events: none;
 	}
@@ -59,7 +61,7 @@ button,
 	}
 
 	&:active {
-		.btn {
+		#{$bp} {
 			&-wrapper {
 				@include active;
 			}

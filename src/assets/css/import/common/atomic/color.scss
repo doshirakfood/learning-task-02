@@ -13,3 +13,18 @@
 		fill: var(--color-green-#{$name});
 	}
 }
+
+
+.text {
+	&-brand {
+		color: var(--color-brand);
+
+		fill: var(--color-brand);
+	}
+
+	&-white {
+		color: var(--color-white);
+
+		fill: var(--color-white);
+	}
+}

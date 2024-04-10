@@ -1,0 +1,83 @@
+$toastAnimationDefaultParams: $transition-primary forwards;
+
+.toast {
+	$bp: &;
+
+	&-wrapper {
+		position: fixed;
+		z-index: 9999;
+
+		display: inline-flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		&--left {
+			&-top {
+				top: 20px;
+				left: 20px;
+				#{$bp}-message {
+					animation: AnimeToastTopStart $toastAnimationDefaultParams;
+
+					& + #{$bp}-message {
+						margin-top: 20px;
+					}
+				}
+			}
+
+			&-bottom {
+				bottom: 20px;
+				left: 20px;
+
+				flex-direction: column-reverse;
+				#{$bp}-message {
+					animation: AnimeToastBottomStart $toastAnimationDefaultParams;
+
+					& + #{$bp}-message {
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
+	}
+
+	&-message {
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		width: 100%;
+		max-width: 340px;
+		min-height: 50px;
+		padding: 10px 40px 10px 20px;
+		border-radius: $radius-primary;
+
+		color: #fff;
+
+		&__close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+
+			fill: #fff;
+
+			svg {
+				width: 16px;
+				height: 16px;
+
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+
+// types
+.toast-message {
+	&--success {
+		background-color: var(--green-primary);
+	}
+
+	&--error {
+		background-color: var(--red-primary);
+	}
+}

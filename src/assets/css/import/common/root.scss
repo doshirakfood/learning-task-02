@@ -1,11 +1,13 @@
 :root {
 	/* COLORS */
 	--color-brand: #{$brand};
+	--color-brand-ghost: #{$brand-ghost};
 	--color-soft-primary: #{$soft-primary};
 	--color-hard-primary: #{$hard-primary};
 	--color-warning: #{$warning};
 	--color-danger: #{$danger};
 	--color-white: #{$white};
+	--color-disabled: #{$disabled};
 
 	@each $name, $variable in $gray-list {
 		--color-gray-#{$name}: #{$variable};

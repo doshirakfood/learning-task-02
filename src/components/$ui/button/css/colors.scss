@@ -1,53 +1,45 @@
 // color
 .btn {
+	&-white {
+		color: var(--color-gray-9);
+
+		background: var(--color-white);
+
+		fill: var(--color-gray-9);
+	}
+
 	&-brand {
 		color: #fff;
 
 		background: var(--color-brand);
 
 		fill: #fff;
-	}
 
-	&-gray {
-		&-primary {
-			background-color: var(--gray-primary);
+		&:hover {
+			background: var(--color-hard-primary);
 		}
 	}
 
-	&-dark {
-		&-gray {
-			color: #fff;
+	&-ghost {
+		color: var(--color-brand);
 
-			background-color: var(--dark-gray-primary);
+		background: var(--color-brand-ghost);
 
-			fill: #fff;
+		fill: var(--color-brand);
+
+		&:hover {
+			color: var(--color-hard-primary);
+
+			background: hsl(from var(--color-hard-primary)  h s l / 20%);
+
+			fill: var(--color-hard-primary);
 		}
 	}
 
-	&-violet {
-		&-gradient {
-			color: #fff;
-
-			background: var(--color-violet-gradient);
-
-			fill: #fff;
-		}
-	}
-
-	&-green {
-		&-gradient {
-			color: #fff;
-
-			background: var(--color-green-gradient);
-
-			fill: #fff;
-		}
-	}
-
-	&-red {
+	&-danger {
 		color: #fff;
 
-		background-color: var(--red-primary);
+		background: var(--color-danger);
 
 		fill: #fff;
 	}

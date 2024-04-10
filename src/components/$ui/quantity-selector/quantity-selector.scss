@@ -1,0 +1,34 @@
+.quantity-selector {
+	display: inline-flex;
+	padding: 8px;
+	border-radius: $radius-tertiary;
+
+	background-color: var(--bg-primary);
+
+	&__field {
+		flex-grow: 1;
+		width: 40px;
+		border: 0;
+
+		text-align: center;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			appearance: none;
+		}
+	}
+
+	&__trigger {
+		width: 34px;
+		min-width: 34px;
+		height: 34px;
+
+		background-color: var(--color-gray-05);
+
+		.btn-icon {
+			width: 14px;
+			min-width: 14px;
+			height: 14px;
+		}
+	}
+}

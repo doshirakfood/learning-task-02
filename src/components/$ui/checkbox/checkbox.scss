@@ -1,0 +1,109 @@
+.checkbox {
+	$bp: &;
+
+	&__label {
+		position: relative;
+
+		display: inline-flex;
+		align-items: center;
+
+		cursor: pointer;
+
+		p {
+			margin: 0;
+		}
+
+		&:hover {
+			#{$bp} {
+				&__replace {
+					border-color: var(--color-brand);
+				}
+			}
+		}
+
+		&:active {
+			#{$bp} {
+				&__replace {
+					@include active;
+				}
+			}
+		}
+	}
+
+	&__field {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 0.5px;
+		height: 0.5px;
+
+		opacity: 0;
+
+		&:focus-visible {
+			& + #{$bp} {
+				&__replace {
+					@include focus-shadow;
+				}
+			}
+		}
+
+		&:checked {
+			& + #{$bp} {
+				&__replace {
+					border-color: var(--color-brand);
+
+					background-color: var(--color-brand);
+
+					&::before {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	&__replace {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 20px;
+		min-width: 20px;
+		height: 20px;
+		border: 1px solid var(--color-gray-1);
+		border-radius: 3px;
+
+		background-color: var(--bg-primary);
+
+		transition: all $transition-primary;
+
+		&::before {
+			display: block;
+			width: 10px;
+			height: 10px;
+
+			opacity: 0;
+
+			content: '';
+		}
+
+		.checkbox-default & {
+			&::before {
+				background: url('@svg/icon-check-white.svg') no-repeat center;
+				background-size: contain;
+			}
+		}
+
+		.checkbox-minus & {
+			&::before {
+				background: url('@svg/icon-minus-white.svg') no-repeat center;
+				background-size: contain;
+			}
+		}
+	}
+
+	&__text {
+		margin: 0 0 0 10px;
+	}
+}

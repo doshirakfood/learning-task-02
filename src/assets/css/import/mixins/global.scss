@@ -48,16 +48,9 @@
 
 @mixin field-appearance() {
 	width: 100%;
-	padding: 16px 15px;
-	border-color: var(--gray-secondary);
-	border-style: solid;
-	border-width: 1px;
+	padding: 14px 16px;
+	border: 1px solid var(--color-gray-1);
 	border-radius: $radius-secondary;
 
-	font-size: inherit;
-	font-family: $font-family;
-	line-height: normal;
-	letter-spacing: -0.04em;
-
-	background-color: var(--bg-secondary);
+	background-color: var(--bg-primary);
 }

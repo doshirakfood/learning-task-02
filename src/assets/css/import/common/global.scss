@@ -10,7 +10,7 @@ body {
 
 	font-size: 16px;
 	font-family: $font-family;
-	line-height: 16px;
+	line-height: 120%;
 
 	background-color: var(--bg-primary);
 }
@@ -23,11 +23,24 @@ body {
 
 .container {
 	width: 100%;
-	max-width: 920px;
+	max-width: 1320px;
 	margin-right: auto;
 	margin-left: auto;
+}
 
-	&-large {
-		max-width: 1640px;
+input,
+textarea {
+	font-size: inherit;
+	font-family: inherit;
+	line-height: 120%;
+
+	&::placeholder {
+		color: var(--color-gray-4);
+	}
+
+	&[disabled] {
+		background-color: var(--color-disabled);
+
+		pointer-events: none;
 	}
 }

@@ -17,6 +17,7 @@
     "ncu:update": "ncu -u"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.0.6",
     "axios": "^1.6.8",
     "npm-check-updates": "^16.14.18",
     "vue": "^3.4.21",

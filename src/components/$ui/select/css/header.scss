@@ -1,0 +1,65 @@
+.select {
+	&-header {
+		@include field-appearance;
+
+		position: relative;
+
+		display: flex;
+		align-items: center;
+
+		padding-right: 35px;
+
+		cursor: pointer;
+
+		transition: border $transition-primary;
+
+		&::after {
+			position: absolute;
+			top: 0;
+			right: 15px;
+			bottom: 0;
+
+			display: block;
+			width: 9px;
+			height: 9px;
+			margin: auto 0;
+
+			background: url('@svg/icon-arrow-down.svg') no-repeat center;
+			background-size: contain;
+			transform-origin: center;
+
+			transition: all $transition-primary;
+
+			content: "";
+
+			.select--open & {
+				transform: rotate(180deg);
+			}
+		}
+
+		&:hover {
+			border-color: var(--color-brand);
+		}
+	}
+
+	&-placeholder {
+		color: var(--color-gray-4);
+
+		user-select: none;
+	}
+
+	&-output {
+		flex-grow: 1;
+	}
+
+	&-clear {
+		width: 19px;
+		height: 19px;
+
+		.icon {
+			width: 9px;
+			min-width: 9px;
+			height: 9px;
+		}
+	}
+}

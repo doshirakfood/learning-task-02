@@ -2,12 +2,14 @@
 
 // -- Main --
 $brand: #00b207;
+$brand-ghost: hsl(from $brand  h s l / 10%);
 $soft-primary: #84d187;
 $hard-primary: #2c742f;
 $warning: #ff8a00;
 $danger: #ea4b48;
 $white: #fff;
 $bg-primary: #fff;
+$disabled: #ddd;
 $outline-primary: $brand;
 
 // -- Gray --

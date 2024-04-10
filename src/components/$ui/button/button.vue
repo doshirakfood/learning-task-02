@@ -74,7 +74,7 @@
 			 * Вид кнопки
 			 */
 			species: {
-				type: Array,
+				type: [Array, String],
 				default: () => [],
 			},
 
@@ -116,15 +116,16 @@
 
 		computed: {
 			classBtnMain() {
-				const speciesClass = this.species.map(
-					(variable) => `btn-${variable}`,
-				)
+				const speciesClass =
+					typeof this.species === 'object'
+						? this.species.map((variable) => `btn-${variable}`)
+						: `btn-${this.species}`
 				const iconClass =
 					!this.label && this.icon.name ? 'btn-icon-only' : ''
 				const colorClass = this.color ? `btn-${this.color}` : ''
 				const sizeClass = this.size ? `btn-size-${this.size}` : ''
 
-				return ['btn', speciesClass, iconClass, colorClass, sizeClass]
+				return ['btn', iconClass, colorClass, sizeClass, speciesClass]
 			},
 
 			classIconMain() {
