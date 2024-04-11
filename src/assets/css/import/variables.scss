@@ -10,7 +10,7 @@ $danger: #ea4b48;
 $white: #fff;
 $bg-primary: #fff;
 $disabled: #ddd;
-$outline-primary: $brand;
+$outline-primary: #0070fb;
 
 // -- Gray --
 $gray-list:
@@ -78,6 +78,8 @@ $name-weight-list: (
 	'extrabold': '800',
 	'black': '900'
 );
+$shadow-primary: 0 0 20px rgb(0 0 0 / 20%);
+$shadow-secondary: 0 0 10px rgb(0 0 0 / 50%);
 
 
 

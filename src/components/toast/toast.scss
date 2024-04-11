@@ -30,7 +30,8 @@ $toastAnimationDefaultParams: $transition-primary forwards;
 
 				flex-direction: column-reverse;
 				#{$bp}-message {
-					animation: AnimeToastBottomStart $toastAnimationDefaultParams;
+					animation: AnimeToastBottomStart
+						$toastAnimationDefaultParams;
 
 					& + #{$bp}-message {
 						margin-bottom: 20px;
@@ -69,7 +70,6 @@ $toastAnimationDefaultParams: $transition-primary forwards;
 		}
 	}
 }
-
 
 // types
 .toast-message {

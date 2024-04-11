@@ -1,19 +1,16 @@
 <template>
 	<label
-		:aria-label="placeholder"
+		:for="elId"
+		:aria-label="$attrs.placeholder"
 		:class="['radio__label', `radio-${type}`]"
-		:for="field_id"
 	>
 		<input
+			v-bind="$attrs"
 			class="radio__field"
 			type="radio"
-			:id="field_id"
-			:checked="checked"
-			:name="name"
-			:placeholder="placeholder"
-			:required="required"
+			:id="elId"
 			:value="modelValue"
-			@change="changeRadio"
+			@change="$emit('update:modelValue', $event.target.value)"
 		/>
 		<i class="radio__replace"></i>
 
@@ -28,55 +25,24 @@
 		name: 'VRadio',
 
 		props: {
-			id: {
+			type: {
 				type: String,
-				default: '',
-			},
-
-			name: {
-				type: String,
-				default: '',
-			},
-
-			checked: {
-				type: Boolean,
-				default: false,
-			},
-
-			required: {
-				type: Boolean,
-				default: false,
+				default: 'default',
 			},
 
 			modelValue: {
 				type: [String, Number],
 				default: '',
 			},
-
-			placeholder: {
-				type: String,
-				default: 'Заповніть поле',
-			},
-
-			type: {
-				type: String,
-				default: 'default',
-			},
 		},
 
 		data() {
 			return {
-				field_id:
-					this.$props.id !== ''
-						? this.$props.id
-						: `label-${this.$.uid}-field`,
+				elId:
+					this.$attrs.id !== ''
+						? this.$attrs.id
+						: `radio-${this.$.uid}-field`,
 			}
-		},
-
-		methods: {
-			changeRadio(event) {
-				this.$emit('update:modelValue', event.target.value)
-			},
 		},
 	}
 </script>

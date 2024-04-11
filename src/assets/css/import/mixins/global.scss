@@ -26,7 +26,7 @@
 }
 
 @mixin focus-shadow() {
-	box-shadow: 0 1px 10px 0 rgb(78 78 78);
+	box-shadow: $shadow-secondary;
 }
 
 @mixin link-hover() {
@@ -53,4 +53,11 @@
 	border-radius: $radius-secondary;
 
 	background-color: var(--bg-primary);
+}
+
+@mixin disabled() {
+	background-color: var(--color-disabled);
+	cursor: auto;
+
+	pointer-events: none;
 }

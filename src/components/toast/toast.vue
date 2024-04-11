@@ -113,6 +113,6 @@
 </script>
 
 <style lang="scss">
-	@import 'animations.scss';
-	@import 'toast.scss';
+	@import 'animations';
+	@import 'toast';
 </style>

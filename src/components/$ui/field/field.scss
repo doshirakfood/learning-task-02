@@ -1,19 +1,13 @@
-.label {
-	$bp: &;
+.field {
+	@include field-appearance;
 
-	position: relative;
+	&:required {
+		.is-valid & {
+			@include is-valid;
+		}
 
-	display: block;
-
-	&__name {
-		display: block;
-		margin: 0 0 8px;
-
-		font-size: 14px;
-	}
-
-
-	&__field {
-		@include field-appearance;
+		.is-invalid & {
+			@include is-invalid;
+		}
 	}
 }

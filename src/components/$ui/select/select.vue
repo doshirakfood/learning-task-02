@@ -1,11 +1,25 @@
 <template>
 	<div
-		:class="['select', `select--${type}`, isMainShow ? 'select--open' : '']"
+		:class="[
+			'select',
+			`select--${type}`,
+			isSelectDisabled ? 'select--disabled' : '',
+			isMainShow ? 'select--open' : '',
+		]"
 	>
+		<input
+			class="select__value"
+			type="text"
+			tabindex="-1"
+			:name="name"
+			:required="required"
+			:value="selected.value"
+		/>
+
 		<div
 			:id="`select-${elId}-header`"
 			ref="header"
-			class="select-header"
+			class="select__header"
 			tabindex="0"
 			role="combobox"
 			aria-haspopup="listbox"
@@ -15,17 +29,17 @@
 			@[event]="onMainShow"
 			@keydown.space="onMainShow"
 		>
-			<div class="select-output">
-				{{ selected }}
+			<div class="select__output">
+				{{ selected.label }}
 
-				<div v-if="!selected" class="select-placeholder">
+				<div v-if="!selected.value" class="select__placeholder">
 					{{ placeholder }}
 				</div>
 			</div>
 
 			<v-button
-				v-if="selected"
-				class="select-clear"
+				v-if="selected.value"
+				class="select__clear"
 				aria-label="Select Clear"
 				title="Select Clear"
 				color="danger"
@@ -40,20 +54,20 @@
 			<div
 				v-show="isMainShow"
 				ref="main"
-				class="select-main"
+				class="select__main"
 				:style="floatingStyles"
 			>
-				<div class="select-overlay"></div>
+				<div class="select__overlay"></div>
 				<div
 					:id="`select-${elId}-dropdown`"
 					ref="dropdown"
 					tabindex="0"
-					class="select-dropdown"
+					class="select__dropdown"
 				>
-					<div v-if="search" class="select-search">
+					<div v-if="search" class="select__search">
 						<input
 							v-model="optionSearch"
-							class="select-search__field"
+							class="select__search-field"
 							type="search"
 							:placeholder="search['placeholder']"
 							@input="$emit('search', optionSearch)"
@@ -62,26 +76,32 @@
 
 					<div
 						ref="listbox"
-						class="select-listbox"
+						class="select__listbox"
 						@click="onSelected"
 					>
 						<div
 							v-for="(option, index) in optionsList"
 							:key="index"
-							class="select-option"
 							role="option"
 							aria-selected="false"
 							:aria-label="option.value || option"
 							:data-option-value="option.value || option"
 							:title="option.value || option"
+							:class="[
+								'select__option',
+								option.value === selected.value ||
+								option === selected.value
+									? 'select__option--selected'
+									: '',
+							]"
 						>
 							{{ option.label || option }}
 						</div>
 					</div>
 
 					<div
-						v-if="optionsList.length === 0"
-						class="select-note select-note--notfound"
+						v-if="search && optionsList.length === 0"
+						class="select__note select__note--notfound"
 					>
 						{{ search.notfoundText }}
 					</div>
@@ -109,9 +129,19 @@
 				default: 'click',
 			},
 
+			name: {
+				type: String,
+				default: 'Select',
+			},
+
 			placeholder: {
 				type: String,
 				default: 'Select',
+			},
+
+			value: {
+				type: [String, Number],
+				default: null,
 			},
 
 			options: {
@@ -132,6 +162,16 @@
 			position: {
 				type: String,
 				default: 'bottom',
+			},
+
+			required: {
+				type: Boolean,
+				default: false,
+			},
+
+			disabled: {
+				type: Boolean,
+				default: false,
 			},
 		},
 
@@ -164,7 +204,11 @@
 			return {
 				elId: this.$.uid,
 				isMainShow: false,
-				selected: null,
+				isSelectDisabled: this.disabled,
+				selected: {
+					label: null,
+					value: this.value,
+				},
 				optionSearch: '',
 			}
 		},
@@ -207,24 +251,16 @@
 
 			onSelected(event) {
 				const target = event.target
-				const option = target.closest('.select-option') || false
-				const selected =
-					this.$refs.listbox.querySelector(
-						'.select-option--selected',
-					) || false
+				const option = target.closest('.select__option') || false
 
 				if (option) {
-					if (selected !== option) {
-						option.classList.add('select-option--selected')
-
-						if (selected) {
-							selected.classList.remove('select-option--selected')
-						}
-					}
+					const value = option.getAttribute('data-option-value')
 
 					this.isMainShow = false
-					this.selected = option.getAttribute('data-option-value')
-					this.$emit('selected', this.selected)
+					this.selected.value = value
+					this.selected.label = option.innerHTML
+
+					this.$emit('selected', this.selected.value)
 				}
 			},
 
@@ -248,17 +284,15 @@
 			},
 
 			onClear() {
-				this.selected = null
-				this.$refs.listbox
-					.querySelector('.select-option--selected')
-					.classList.remove('select-option--selected')
+				this.selected.value = null
+				this.selected.label = null
 
-				this.$emit('clear', true)
+				this.$emit('clear', null)
 			},
 		},
 	}
 </script>
 
 <style lang="scss">
-	@import 'select.scss';
+	@import 'select';
 </style>

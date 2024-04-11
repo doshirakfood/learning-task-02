@@ -1,22 +1,24 @@
 <template>
-	<input
-		v-bind="$attrs"
-		class="field"
-		:id="elId"
-		:type="type"
-		:value="modelValue"
-		@input="$emit('update:modelValue', $event.target.value)"
-	/>
+	<div class="textarea">
+		<textarea
+			v-bind="$attrs"
+			class="textarea__field"
+			:id="elId"
+			:value="modelValue"
+			:rows="$attrs.rows || 5"
+			@input="$emit('update:modelValue', $event.target.value)"
+		/>
+	</div>
 </template>
 
 <script>
 	export default {
-		name: 'VField',
+		name: 'VTextarea',
 		inheritAttrs: false,
 		props: {
-			type: {
+			labelText: {
 				type: String,
-				default: 'text',
+				default: null,
 			},
 
 			modelValue: {
@@ -26,8 +28,6 @@
 		},
 
 		emits: ['update:modelValue'],
-
-		setup() {},
 
 		data() {
 			return {
@@ -40,5 +40,5 @@
 </script>
 
 <style lang="scss">
-	@import 'field';
+	@import 'textarea';
 </style>

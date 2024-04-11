@@ -1,11 +1,13 @@
 .select {
-	&-main {
+	$bp: &;
+
+	&__main {
 		z-index: 9999;
 
 		width: 100%;
 	}
 
-	&-dropdown {
+	&__dropdown {
 		position: relative;
 
 		width: 100%;
@@ -18,64 +20,7 @@
 		box-shadow: 0 20px 40px 0 #0000001a;
 	}
 
-	&-search {
-		position: sticky;
-		top: 0;
-
-		&__field {
-			width: 100%;
-			padding: 14px 14px 14px 44px;
-			border: 0;
-			border-bottom: 1px solid var(--color-gray-1);
-			border-radius: 0;
-
-			background-image: url("@svg/icon-search.svg");
-			background-repeat: no-repeat;
-			background-position: 14px center;
-			background-size: 16px 16px;
-			outline: none;
-
-			&:focus {
-				border-color: var(--color-brand);
-			}
-		}
-	}
-
-	&-option {
-		padding: 14px;
-
-		cursor: pointer;
-
-		transition: all $transition-primary;
-
-		user-select: none;
-
-		&:not(.select-option--selected) {
-			&:hover {
-				color: var(--color-hard-primary);
-
-				background: hsl(from var(--color-hard-primary)  h s l / 20%);
-
-				fill: var(--color-hard-primary);
-			}
-		}
-
-		&--selected {
-			border-color: var(--color-brand);
-
-			color: #fff;
-
-			background-color: var(--color-brand);
-
-			fill: #fff;
-		}
-
-		& + .select-option {
-			border-top: 1px solid var(--color-gray-1);
-		}
-	}
-
-	&-note {
+	&__note {
 		padding: 14px;
 	}
 }

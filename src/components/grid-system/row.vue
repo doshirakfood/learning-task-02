@@ -22,12 +22,12 @@
 			},
 
 			gap: {
-				type: String,
+				type: [String, Number],
 				default: 24,
 			},
 
 			cols: {
-				type: String,
+				type: [String, Number],
 				default: 12,
 			},
 		},
@@ -44,8 +44,8 @@
 
 		&-grid {
 			display: grid;
-			gap: var(--grid-gap);
 			grid-template-columns: repeat(var(--grid-columns), 1fr);
+			gap: var(--grid-gap);
 		}
 
 		&-items {

@@ -254,12 +254,21 @@
 
 		<develop-section title="Forms">
 			<develop-box title="Fields">
-				<v-field type="Email" placeholder="Email" />
-				<br />
-				<v-field
-					label-text="First name"
-					placeholder="Your first name"
-				/>
+				<v-row>
+					<v-col cols="full">
+						<v-field type="Email" placeholder="Email" />
+					</v-col>
+
+					<v-col cols="full">
+						<v-field placeholder="Your first name" />
+					</v-col>
+
+					<v-col cols="full">
+						<v-textarea
+							placeholder="Notes about your order, e.g. special notes for delivery"
+						/>
+					</v-col>
+				</v-row>
 			</develop-box>
 
 			<develop-box title="Select">
@@ -298,34 +307,34 @@
 				<br />
 				<v-radio name="radiobutton">Three</v-radio>
 			</develop-box>
+
+			<develop-box title="Form and Validation">
+				<v-dynamic-form
+					:schema="schema"
+					@submit="onFormSubmit"
+				></v-dynamic-form>
+			</develop-box>
 		</develop-section>
 	</layout-default>
 </template>
 
 <script>
+	import { object, string, bool } from 'yup'
 	import LayoutDefault from '@layouts/default.vue'
 	import DevelopSection from '@components/develop/section/section.vue'
 	import DevelopBox from '@components/develop/box/box.vue'
-	import VButton from '@ui/button/button.vue'
-	import VRow from '@components/grid-system/row.vue'
-	import VCol from '@components/grid-system/col.vue'
-	import VCheckbox from '@ui/checkbox/checkbox.vue'
-	import VRadio from '@ui/radio/radio.vue'
 
 	export default {
 		name: 'PageDevelop',
 		components: {
-			VRadio,
-			VCheckbox,
-			VCol,
-			VRow,
-			VButton,
 			LayoutDefault,
 			DevelopSection,
 			DevelopBox,
 		},
+
 		data() {
 			return {
+				selectResult: '',
 				selectList: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
 				sizeListArray: [
 					'light',
@@ -336,7 +345,76 @@
 					'extrabold',
 					'black',
 				],
+
+				schema: {
+					fields: [
+						{
+							type: 'text',
+							name: 'name',
+							placeholder: 'Your first name',
+							required: true,
+							label: 'First name',
+							as: 'input',
+						},
+						{
+							type: 'email',
+							name: 'email',
+							placeholder: 'Email',
+							required: true,
+							label: 'Your email',
+							as: 'input',
+						},
+						{
+							name: 'select',
+							required: true,
+							placeholder: 'List',
+							label: 'Choose something from the list',
+							options: [
+								'light',
+								'normal',
+								'medium',
+								'semibold',
+								'bold',
+								'extrabold',
+								'black',
+							],
+							as: 'select',
+						},
+
+						{
+							name: 'orderNotes',
+							required: true,
+							placeholder:
+								'Notes about your order, e.g. special notes for delivery',
+							label: 'Order Notes (Optional)',
+							as: 'textarea',
+						},
+						{
+							name: 'differentAddress',
+							required: true,
+							label: 'Ship to a different address',
+							placeholder: 'Ship to a different address',
+							as: 'checkbox',
+						},
+					],
+
+					validate: object({
+						name: string().required(),
+						email: string().email().required(),
+						select: string().required(),
+						orderNotes: string().required(),
+						differentAddress: bool()
+							.required()
+							.oneOf([true], 'Field must be checked'),
+					}),
+				},
 			}
+		},
+
+		methods: {
+			onFormSubmit(values) {
+				alert('Validation passed')
+			},
 		},
 	}
 </script>

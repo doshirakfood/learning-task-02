@@ -25,6 +25,11 @@
 			flex-grow: unset;
 		}
 
+		&-full {
+			flex-basis: calc(100% - 24px);
+			flex-grow: 1;
+		}
+
 		@for $i from 1 through 12 {
 			$result: (calc(100% / 12) * $i);
 

@@ -1,19 +1,16 @@
 <template>
 	<label
 		:for="elId"
-		:aria-label="placeholder"
+		:aria-label="$attrs.placeholder"
 		:class="['checkbox__label', `checkbox-${type}`]"
 	>
 		<input
-			:id="elId"
+			v-bind="$attrs"
 			class="checkbox__field"
 			type="checkbox"
-			:name="name"
-			:checked="fieldChecked"
-			:required="isRequired"
-			:placeholder="placeholder"
-			:value="value"
-			@change="$emit('update:modelValue', $event.target.value)"
+			:id="elId"
+			:checked="modelValue"
+			@change="onChange"
 		/>
 		<i class="checkbox__replace" />
 
@@ -26,55 +23,30 @@
 <script>
 	export default {
 		name: 'VCheckbox',
-
+		inheritAttrs: false,
 		props: {
 			type: {
 				type: String,
 				default: 'default',
 			},
 
-			placeholder: {
-				type: String,
-				default: 'Нажмите, чтобы отметить флажком.',
-			},
-
-			id: {
-				type: String,
-				default: '',
-			},
-
-			name: {
-				type: String,
-				default: '',
-			},
-
-			value: {
-				type: [String, Number],
-				default: null,
-			},
-
-			isRequired: {
-				type: Boolean,
-				default: false,
-			},
-
-			isChecked: {
-				type: Boolean,
-				default: false,
-			},
-
 			modelValue: {
-				type: [String, Number],
-				default: null,
+				type: Boolean,
+				default: false,
 			},
 		},
 		emits: ['update:modelValue'],
 
 		data() {
 			return {
-				fieldChecked: this.isChecked,
-				elId: this.id || `checkbox-${this.$.uid}-field`,
+				elId: this.$attrs.id || `checkbox-${this.$.uid}-field`,
 			}
+		},
+
+		methods: {
+			onChange(event) {
+				this.$emit('update:modelValue', event.target.checked)
+			},
 		},
 	}
 </script>

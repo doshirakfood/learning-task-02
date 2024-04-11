@@ -14,7 +14,10 @@ button,
 	background-color: transparent;
 	cursor: pointer;
 
-	transition: background-color $transition-primary, color 0s, fill 0s;
+	transition:
+		background-color $transition-primary,
+		color 0s,
+		fill 0s;
 
 	.icon {
 		&-left {
@@ -43,17 +46,12 @@ button,
 		transition: all $transition-primary;
 	}
 
-	&-icon,
-	&-pic {
+	&-icon {
 		width: 16px;
 		min-width: 16px;
 		height: 16px;
 
 		pointer-events: none;
-	}
-
-	&-pic {
-		object-fit: cover;
 	}
 
 	&:focus-visible {

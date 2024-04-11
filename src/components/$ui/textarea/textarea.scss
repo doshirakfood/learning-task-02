@@ -1,0 +1,19 @@
+$valPos: calc(100% - 16px) calc(100% - 14px);
+
+.textarea {
+	display: block;
+
+	&__field {
+		@include field-appearance;
+
+		&:required {
+			.is-valid & {
+				@include is-valid($valPos);
+			}
+
+			.is-invalid & {
+				@include is-invalid($valPos);
+			}
+		}
+	}
+}

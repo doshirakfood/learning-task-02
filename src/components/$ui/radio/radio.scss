@@ -18,7 +18,15 @@
 		&:active {
 			#{$bp} {
 				&__replace {
-					@include  active;
+					@include active;
+				}
+			}
+		}
+
+		&:hover {
+			#{$bp} {
+				&__replace {
+					border-color: inherit;
 				}
 			}
 		}
@@ -35,7 +43,7 @@
 		opacity: 0;
 
 		&:focus-visible {
-			#{$bp} {
+			& + #{$bp} {
 				&__replace {
 					@include focus-shadow;
 				}
@@ -49,6 +57,16 @@
 						opacity: 1;
 					}
 				}
+			}
+		}
+
+		&:required {
+			.is-valid & + #{$bp}__replace {
+				@include is-border-valid;
+			}
+
+			.is-invalid & + #{$bp}__replace {
+				@include is-border-invalid;
 			}
 		}
 	}

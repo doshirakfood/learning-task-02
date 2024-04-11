@@ -1,5 +1,5 @@
 .select {
-	&-header {
+	&__header {
 		@include field-appearance;
 
 		position: relative;
@@ -30,29 +30,33 @@
 
 			transition: all $transition-primary;
 
-			content: "";
+			content: '';
 
 			.select--open & {
 				transform: rotate(180deg);
 			}
 		}
 
+		&:focus-within {
+			@include focus;
+		}
+
 		&:hover {
-			border-color: var(--color-brand);
+			border-color: inherit;
 		}
 	}
 
-	&-placeholder {
+	&__placeholder {
 		color: var(--color-gray-4);
 
 		user-select: none;
 	}
 
-	&-output {
+	&__output {
 		flex-grow: 1;
 	}
 
-	&-clear {
+	&__clear {
 		width: 19px;
 		height: 19px;
 
