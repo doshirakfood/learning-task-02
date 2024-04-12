@@ -55,3 +55,9 @@ button,
 		@include disabled;
 	}
 }
+
+abbr {
+	text-decoration: none;
+
+	cursor: help;
+}

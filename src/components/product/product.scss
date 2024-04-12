@@ -1,0 +1,188 @@
+.product {
+	$bp: &;
+
+	position: relative;
+
+	border: 1px solid var(--color-gray-1);
+
+	transition: all $transition-primary;
+
+	&:hover {
+		border-color: var(--color-hard-primary);
+
+		box-shadow: $shadow-product;
+	}
+
+	&__wrapper {
+		#{$bp}--small & {
+			display: flex;
+		}
+	}
+
+	&__header {
+		position: absolute;
+		top: 0;
+
+		width: 100%;
+		padding: 16px;
+
+		&-row {
+			display: flex;
+			justify-content: space-between;
+			margin: -10px;
+		}
+
+		&-col {
+			margin: 10px;
+		}
+	}
+
+	&__actions {
+		&-row {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin: -3px;
+
+			#{$bp}--medium & {
+				flex-direction: column;
+			}
+
+			#{$bp}--big & {
+				width: 100%;
+			}
+		}
+
+		&-item {
+			margin: 3px;
+			border-color: var(--color-gray-05);
+		}
+
+		#{$bp}--small & {
+			display: none;
+		}
+
+		#{$bp}--small:hover & {
+			display: inline-block;
+		}
+	}
+
+	&__main {
+		#{$bp}--big & {
+			padding: 24px;
+		}
+
+		#{$bp}--small & {
+			display: flex;
+		}
+	}
+
+	&__pic {
+		width: 100%;
+		height: 100%;
+		max-height: 302px;
+
+		object-fit: contain;
+		#{$bp}--big & {
+			max-height: 446px;
+		}
+
+		#{$bp}--small & {
+			width: 102px;
+		}
+	}
+
+	&__footer {
+		padding: 12px;
+
+		&-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin: -10px;
+
+			#{$bp}--big & {
+				justify-content: center;
+			}
+		}
+
+		&-col {
+			margin: 10px;
+		}
+
+		#{$bp}--big & {
+			padding: 12px 24px 24px;
+		}
+
+		#{$bp}--small & {
+			flex-grow: 1;
+			min-height: 90px;
+			padding: 12px 24px;
+		}
+	}
+
+	&__info {
+		#{$bp}--big & {
+			text-align: center;
+		}
+
+		&-item {
+			display: block;
+		}
+	}
+
+	&__name {
+		@include text-ellipsis;
+		@include text-size('small');
+
+		display: inline-block;
+
+		max-width: 200px;
+
+		color: var(--color-gray-7);
+
+		transition: color $transition-primary;
+
+		.product:hover & {
+			color: var(--color-hard-primary);
+		}
+
+		#{$bp}--big & {
+			@include text-size('large');
+		}
+	}
+
+	&__price {
+		#{$bp}--small:hover & {
+			display: none;
+		}
+	}
+
+	&__rating {
+		margin-top: 5px;
+		#{$bp}--big & {
+			justify-content: center;
+			width: 100%;
+		}
+
+		#{$bp}--small:hover & {
+			display: none;
+		}
+	}
+
+	&__add {
+		.product:hover & {
+			border-color: var(--color-brand);
+
+			color: var(--color-white);
+
+			background: var(--color-brand);
+
+			fill: var(--color-white);
+		}
+
+		#{$bp}--big & {
+			flex-grow: 1;
+		}
+	}
+}

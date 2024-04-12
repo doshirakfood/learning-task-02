@@ -11,33 +11,34 @@ $white: #fff;
 $bg-primary: #fff;
 $disabled: #ddd;
 $outline-primary: #0070fb;
+$sizeNameList: 'tiny', 'small', 'medium', 'large', 'xl', 'xxl';
 
 // -- Gray --
 $gray-list:
-	'05' '#f2f2f2',
-	'1' '#e6e6e6',
-	'2' '#ccccc',
-	'3' '#b3b3b3',
-	'4' '#999999',
-	'5' '#808080',
-	'6' '#666666',
-	'7' '#4d4d4d',
-	'8' '#333333',
-	'9' '#1a1a1a'
+	'05' #f2f2f2,
+	'1' #e6e6e6,
+	'2' #cccc,
+	'3' #b3b3b3,
+	'4' #999,
+	'5' #808080,
+	'6' #666,
+	'7' #4d4d4d,
+	'8' #333,
+	'9' #1a1a1a
 ;
 
 // -- Green --
 $green-list:
-	'05' '#edf2ee',
-	'1' '#dae5da',
-	'2' '#b4ccb4',
-	'3' '#96b297',
-	'4' '#7a997c',
-	'5' '#618062',
-	'6' '#406b42',
-	'7' '#2b572e',
-	'8' '#173b1a',
-	'9' '#002603'
+	'05' #edf2ee,
+	'1' #dae5da,
+	'2' #b4ccb4,
+	'3' #96b297,
+	'4' #7a997c,
+	'5' #618062,
+	'6' #406b42,
+	'7' #2b572e,
+	'8' #173b1a,
+	'9' #002603
 ;
 
 
@@ -80,6 +81,7 @@ $name-weight-list: (
 );
 $shadow-primary: 0 0 20px rgb(0 0 0 / 20%);
 $shadow-secondary: 0 0 10px rgb(0 0 0 / 50%);
+$shadow-product: 0 0 12px rgb(32 181 38 / 32%);
 
 
 

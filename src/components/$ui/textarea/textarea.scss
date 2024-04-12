@@ -6,6 +6,9 @@ $valPos: calc(100% - 16px) calc(100% - 14px);
 	&__field {
 		@include field-appearance;
 
+		width: 100% !important;
+		min-height: 150px;
+
 		&:required {
 			.is-valid & {
 				@include is-valid($valPos);

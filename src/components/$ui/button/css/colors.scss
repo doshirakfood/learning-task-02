@@ -43,4 +43,25 @@
 
 		fill: #fff;
 	}
+
+	@each $name in $gray-list {
+		$key: nth($name, 1);
+		$i: index($gray-list, $name);
+
+		&-gray-#{$key} {
+			background-color: var(--color-gray-#{$key});
+
+			@if $i < 6 {
+				color: var(--color-gray-9);
+
+				fill: var(--color-gray-9);
+			}
+
+			@if $i >= 6 {
+				color: var(--color-white);
+
+				fill: var(--color-white);
+			}
+		}
+	}
 }

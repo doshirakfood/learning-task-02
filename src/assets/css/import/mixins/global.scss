@@ -7,7 +7,6 @@
 	background-attachment: local, local, scroll, scroll;
 }
 
-
 @mixin scroll-shadow-y($bcgColor) {
 	background: linear-gradient($bcgColor 33%, rgb(255 255 255 / 0%)), linear-gradient(rgb(255 255 255 / 0%), $bcgColor 66%) 0 100%, radial-gradient(farthest-side at 50% 0, rgb(34 34 34 / 50%), rgb(0 0 0 / 0%)), radial-gradient(farthest-side at 50% 100%, rgb(34 34 34 / 50%), rgb(0 0 0 / 0%)) 0 100%;
 	background-color: $bcgColor;
@@ -40,6 +39,19 @@
 
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+
+@mixin text-size($size: 'medium', $weight: 400, $height: 150%) {
+	font-weight: $weight;
+	font-size: var(--text-size-#{$size});
+	line-height: $height;
+}
+
+@mixin reset-list() {
+	margin: 0;
+	padding: 0;
+
+	list-style-type: none;
 }
 
 @mixin outline-primary() {
